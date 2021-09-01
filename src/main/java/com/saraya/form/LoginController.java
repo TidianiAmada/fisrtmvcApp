@@ -6,21 +6,28 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("username")
 public class LoginController {
 	@Autowired
 	UserValidation uservalidation;
 	
-	@RequestMapping(value="/log", method=RequestMethod.GET)
-	public String fstApp() {
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String loginApp() {
 		return "login";
 		}
-		@RequestMapping(value="/log",method=RequestMethod.POST)
-		public String home(@RequestParam String username,
-				@RequestParam String password, ModelMap model) {
-			model.put("username", username);
-			model.put("password", password);
-			return "homepage";
-			}
+	@RequestMapping(value="/log",method=RequestMethod.POST)
+	public String home(@RequestParam String username,
+			@RequestParam String password, ModelMap model) {
+		model.put("username", username);
+		model.put("password", password);
+		if(uservalidation.isValid(username, password)) {
+			return "homepage";	
+		} else {
+			return "login";
+		}
+		}
+	
 }

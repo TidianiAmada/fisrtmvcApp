@@ -1,15 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>first MVC app</title>
-</head>
-<body>
-	<h2>Welcome</h2>
+<%@ include file="../common/menu.jspf" %>
+<h2>Welcome go to <a href="/list">List</a> </h2>
 	
 	
-</body>
-</html>
+	

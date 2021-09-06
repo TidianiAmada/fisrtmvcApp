@@ -22,7 +22,7 @@ public class LoginController {
 	public String home(@RequestParam String username,
 			@RequestParam String password, ModelMap model) {
 		model.put("username", username);
-		model.put("password", password);
+//		model.put("password", password);
 		if(uservalidation.isValid(username, password)) {
 			return "homepage";	
 		} else {

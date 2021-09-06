@@ -1,13 +1,19 @@
 package com.saraya.form;
 
 import java.util.Date;
+import java.util.Objects;
+
+
+
 
 public class Todo {
-	private int id;
-	private String username;
-	private String desc;
-	private Date targetDate;
-	private boolean isDone;
+	
+	public int id;
+	public String username;
+	public String desc;
+	public Date targetDate;
+	public boolean isDone;
+	
 	public Todo(int id, String username, String desc, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;
@@ -16,6 +22,11 @@ public class Todo {
 		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
+	
+	public Todo() {
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -50,6 +61,21 @@ public class Todo {
 	public String toString() {
 		return "Todo [id=" + id + ", username=" + username + ", desc=" + desc + ", targetDate=" + targetDate
 				+ ", isDone=" + isDone + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Todo other = (Todo) obj;
+		return id == other.id;
 	}
 	
 	

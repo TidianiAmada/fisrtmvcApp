@@ -36,14 +36,16 @@ public class TodoService {
 		todos.add(new Todo(++count, name,desc, date,isDone));
 	}
 	public void deleteTodo(int id) {
-		ListIterator<Todo> it= todos.listIterator();
-		while(it.hasNext()) {
-			Todo ndiaye = it.next();
-			if(ndiaye.getId()==id) {
-				todos.remove(ndiaye);
-			}
-		
-		}
+//		ListIterator<Todo> it= todos.listIterator();
+//		while(it.hasNext()) {
+//			Todo ndiaye = it.next();
+//			if(ndiaye.getId()==id) {
+//				todos.remove(ndiaye);
+//			}
+//		
+//		}
+		Todo todo=findById(id);
+		todos.remove(todo);
 		
 	}
 
@@ -57,8 +59,8 @@ public class TodoService {
 		}
 		return null;
 	}
-	public void update(Todo todo) {
-		todos.remove(todo);
-		todos.add(todo);
+	public void update(Todo todo,int previous_id,String desc) {
+		Todo td=findById(previous_id);
+		td.setDesc(desc);
 	}
 	}

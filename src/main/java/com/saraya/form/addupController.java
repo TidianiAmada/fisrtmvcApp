@@ -24,18 +24,19 @@ public class addupController {
 	@RequestMapping(value = "/updateForm", method = RequestMethod.GET)
 	public String showUpdateForm(@RequestParam String desc,ModelMap model,@RequestParam int id) {
 		model.addAttribute("todo",todoservice.findById(id));
+		model.addAttribute("previous_id", id);
 		return "addTDLextention";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String showadd(@Valid @ModelAttribute("todo") Todo todo,  ModelMap model,@RequestParam String desc) {
+	public String showadd(@Valid @ModelAttribute("todo") Todo todo,  ModelMap model,@RequestParam String desc,@RequestParam int previous_id) {
 		
 		
 //		if(result.hasErrors()) {
 //			return "/updateForm";
 //		}
-		String name= (String) model.get("username");
-		todoservice.update(todo);
+		
+		todoservice.update(todo,previous_id,desc);
 		model.clear();
 		return "redirect:/list";
 	}

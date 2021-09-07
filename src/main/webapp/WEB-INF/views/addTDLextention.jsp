@@ -4,7 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="container">
-<form:form  method="post" action="/update" modelAttribute="todo">
+<form:form  method="post" action="/update?previous_id=${previous_id }" modelAttribute="todo">
+
  <fieldset>
  	<form:label path="desc">Description</form:label>
  	<form:input path="desc"/>
